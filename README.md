@@ -397,6 +397,190 @@ Density plot of posterior distributions
 ![c50bdf26-ade2-4c0f-818d-d68cc4787f5c](https://github.com/user-attachments/assets/dea31467-0855-4bcf-89fd-a31b8d24f02f)
 
 
+## Bayesian Logistic Regression Results (MCMC)
+
+The table below presents the 95% Highest Density Interval (HDI) for each parameter in the Bayesian logistic regression model using Markov Chain Monte Carlo (MCMC) sampling. The HDI provides the range of the most credible values for each parameter.
+
+| Parameter                  | 95% HDI                |
+|----------------------------|------------------------|
+| (Intercept)                | [-3.27, -2.81]        |
+| Total_assets               | [-2.00,  1.24]        |
+| Shareholders_funds         | [-1.16,  0.44]        |
+| Long_term_debt             | [ 0.12,  0.95]        |
+| Loans                      | [-0.24,  0.39]        |
+| Turnover                   | [-0.30,  0.33]        |
+| EBITDA                     | [-0.08,  0.73]        |
+| Net_income                 | [-3.67,  3.51]        |
+| Tangible_fixed_assets      | [-0.56,  0.45]        |
+| Profit_Loss_after_tax      | [-2.77,  3.95]        |
+| Current_liabilities        | [-0.15,  1.69]        |
+| Current_assets             | [-1.02,  0.10]        |
+| Net_income_on_Total_Assets | [-1.33, -0.86]        |
+| Leverage                   | [-1.14, -0.38]        |
+| Tangible_on_total_assets   | [-0.59,  0.02]        |
+
+### Interpretation
+- Parameters with HDIs entirely above or below zero suggest a higher probability of having a meaningful effect. For example, **Long_term_debt** has a positive HDI [0.12, 0.95], indicating a likely positive association with the dependent variable.
+- Conversely, **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
+- Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
+
+These results should be interpreted in context with domain knowledge and additional model diagnostics to confirm their significance and robustness.
+
+
+
+
+##now we train another logisitc regressione to make predictions.
+
+
+
+### Model Information
+| Parameter      | Value  |
+|---------------|--------|
+| Function      | stan_glm |
+| Family        | Binomial (logit) |
+| Observations  | 1435 |
+| Predictors    | 15 |
+| Algorithm     | Sampling |
+| Posterior Sample Size | 4000 |
+
+### Coefficients (Estimates)
+| Predictor                     | Mean  | SD    | 10%   | 50%   | 90%   |
+|--------------------------------|-------|------|------|------|------|
+| (Intercept)                   | -3.248 | 0.155 | -3.452 | -3.243 | -3.048 |
+| Total_assets                  |  0.000 | 0.976 | -1.265 | 0.004 | 1.274 |
+| Shareholders_funds            | -0.381 | 0.507 | -1.019 | -0.388 | 0.270 |
+| Long_term_debt                |  0.299 | 0.266 | -0.036 | 0.295 | 0.640 |
+| Loans                         |  0.318 | 0.210 | 0.051  | 0.321 | 0.582 |
+| Turnover                      | -0.247 | 0.316 | -0.660 | -0.242 | 0.153 |
+| EBITDA                        |  0.417 | 0.330 | -0.004 | 0.417 | 0.834 |
+| Net_income                    |  0.154 | 1.911 | -2.220 | 0.178 | 2.514 |
+| Tangible_fixed_assets         |  0.046 | 0.355 | -0.413 | 0.062 | 0.481 |
+| Profit_Loss_after_tax         |  0.277 | 1.782 | -1.889 | 0.250 | 2.496 |
+| Current_liabilities           |  0.315 | 0.584 | -0.414 | 0.281 | 1.081 |
+| Current_assets                | -0.298 | 0.394 | -0.817 | -0.284 | 0.192 |
+| Net_income_on_Total_Assets   | -1.400 | 0.179 | -1.630 | -1.395 | -1.172 |
+| Leverage                     | -0.649 | 0.242 | -0.959 | -0.641 | -0.349 |
+| Tangible_on_total_assets     | -0.588 | 0.213 | -0.862 | -0.586 | -0.320 |
+
+### Fit Diagnostics
+| Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
+|------------|------|-----|------|------|------|
+| mean_PPD   | 0.069 | 0.008 | 0.059 | 0.068 | 0.079 |
+
+### MCMC Diagnostics
+| Predictor                     | mcse  | Rhat  | n_eff |
+|--------------------------------|------|------|------|
+| (Intercept)                   | 0.003 | 0.999 | 3519 |
+| Total_assets                  | 0.022 | 1.000 | 1935 |
+| Shareholders_funds            | 0.011 | 1.001 | 2205 |
+| Long_term_debt                | 0.006 | 1.002 | 1930 |
+| Loans                         | 0.004 | 1.001 | 3440 |
+| Turnover                      | 0.005 | 1.001 | 3643 |
+| EBITDA                        | 0.007 | 1.000 | 2364 |
+| Net_income                    | 0.039 | 1.001 | 2462 |
+| Tangible_fixed_assets         | 0.008 | 1.003 | 1921 |
+| Profit_Loss_after_tax         | 0.036 | 1.001 | 2483 |
+| Current_liabilities           | 0.012 | 1.001 | 2205 |
+| Current_assets                | 0.008 | 1.002 | 2223 |
+| Net_income_on_Total_Assets   | 0.003 | 1.000 | 3629 |
+| Leverage                     | 0.005 | 1.002 | 2867 |
+| Tangible_on_total_assets     | 0.004 | 1.000 | 2988 |
+
+### Interpretation
+- The model shows a well-calibrated posterior distribution with Rhat values close to 1, indicating convergence.
+- Key predictors with strong effects include **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets**, all showing significant negative coefficients.
+- Fit diagnostics indicate a good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
+
+
+### 50% Credible Intervals for Coefficients
+| Predictor                     | 25%   | 75%   |
+|--------------------------------|------|------|
+| (Intercept)                   | -3.354 | -3.141 |
+| Total_assets                  | -0.659 | 0.644 |
+| Shareholders_funds            | -0.732 | -0.045 |
+| Long_term_debt                |  0.119 | 0.472 |
+| Loans                         |  0.177 | 0.457 |
+| Turnover                      | -0.453 | -0.034 |
+| EBITDA                        |  0.197 | 0.640 |
+| Net_income                    | -1.080 | 1.355 |
+| Tangible_fixed_assets         | -0.180 | 0.289 |
+| Profit_Loss_after_tax         | -0.854 | 1.415 |
+| Current_liabilities           | -0.085 | 0.702 |
+| Current_assets                | -0.558 | -0.022 |
+| Net_income_on_Total_Assets   | -1.516 | -1.278 |
+| Leverage                     | -0.810 | -0.481 |
+| Tangible_on_total_assets     | -0.727 | -0.439 |
+
+### Interpretation
+- The 50% credible intervals provide a refined understanding of the parameter estimates, indicating the most likely range for each coefficient.
+- **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets** show strong negative effects with tight credible intervals, suggesting a significant influence on the target variable.
+- Some predictors, such as **Loans** and **EBITDA**, have intervals that do not include zero, indicating a potential positive effect on the outcome.
+- The inclusion of zero in the credible intervals of certain variables, like **Total_assets**, suggests uncertainty about their impact.
+
+These insights can help improve model interpretability and guide feature selection for better predictive performance.
+
+
+
+
+
+
+![e0eec403-cd7b-4aa1-8414-53c7c2b4fdb0](https://github.com/user-attachments/assets/73178355-801d-4361-9e13-34e62281129b)
+
+
+![462d7719-18a8-411f-9f01-de9b74e5ff09](https://github.com/user-attachments/assets/8b759400-dadd-47ca-9c0c-dd99a169755e)
+
+
+
+### 95% Highest Density Intervals (HDI) for Coefficients
+| Predictor                     | 95% HDI (Lower) | 95% HDI (Upper) |
+|--------------------------------|----------------|----------------|
+| (Intercept)                   | -3.56 | -2.96 |
+| Total_assets                  | -1.86 | 1.90 |
+| Shareholders_funds            | -1.33 | 0.64 |
+| Long_term_debt                | -0.22 | 0.81 |
+| Loans                         | -0.09 | 0.75 |
+| Turnover                      | -0.84 | 0.40 |
+| EBITDA                        | -0.20 | 1.06 |
+| Net_income                    | -3.54 | 3.96 |
+| Tangible_fixed_assets         | -0.65 | 0.76 |
+| Profit_Loss_after_tax         | -3.29 | 3.71 |
+| Current_liabilities           | -0.81 | 1.44 |
+| Current_assets                | -1.09 | 0.43 |
+| Net_income_on_Total_Assets   | -1.75 | -1.04 |
+| Leverage                     | -1.15 | -0.22 |
+| Tangible_on_total_assets     | -1.02 | -0.17 |
+
+### Interpretation
+- The 95% HDI represents the most credible range for each parameter, providing a more comprehensive uncertainty assessment than the 50% intervals.
+- **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets** remain strongly negative, reinforcing their significant impact.
+- Several predictors, such as **Loans** and **EBITDA**, have wide intervals that include zero, indicating uncertainty about their effect direction.
+- The broader intervals in the 95% HDI highlight the model’s overall uncertainty and emphasize the importance of further validation.
+
+
+The result of predictions:
+| Predicted \ Actual | 0   | 1   |
+|--------------------|-----|-----|
+| 0                  | 567 | 37  |
+| 1                  | 5   | 5   |
+
+
+ "Accuracy: 93.16 %"
+
+
+
+
+##Naive Bayes classifier
+### Confusion Matrix
+| Predicted | Actual 0 | Actual 1 |
+|-----------|---------|---------|
+| **0**     | 554     | 33      |
+| **1**     | 18      | 9       |
+
+### Accuracy
+**91.69%**
+
+### Interpretation
+The Naïve Bayes classifier performed well, achieving an accuracy of **91.69%**. However, the model has some difficulty correctly predicting class **1**, as indicated by the lower count of true positives (9) and the number of false negatives (33). Depending on the application, further tuning or feature selection may help improve classification performance, especially for the minority class.
 
 
 ## Conclusions
