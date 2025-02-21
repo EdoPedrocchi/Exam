@@ -107,9 +107,52 @@ correlation matrix
 | **Leverage**               | -0.085759 | 0.086082         | 0.009553               | 0.557805           | 0.180990  | -0.000610    | 0.050950   | -0.048617      | 0.188769                  | -0.048762               | 0.019858               | 0.046599            | -0.060431                    | 1.000000     | 0.374895                  |
 | **Tangible_on_total_assets**| -0.062352 | 0.196559         | 0.210004               | 0.271232           | 0.073458  | -0.012307    | 0.157352   | -0.054412      | 0.553759                  | -0.054582               | 0.095107               | -0.058964           | -0.071141                    | 0.374895     | 1.000000                  |
 
-Financial Learning
-Bayesian Learning
-Conclusions
+
+## Financial Learning
+
+### Logistic regression
+
+| Variable                      | Estimate  | Std. Error | z value | Pr(>|z|)  | Significance |
+|--------------------------------|----------|------------|---------|-----------|--------------|
+| **(Intercept)**                | -3.27901  | 0.26411    | -12.415 | < 2e-16   | ***          |
+| **Total_assets**               | 0.05921   | 1.13432    | 0.052   | 0.95837   |              |
+| **Shareholders_funds**         | -0.25349  | 0.53592    | -0.473  | 0.63621   |              |
+| **Long_term_debt**             | 0.27565   | 0.27326    | 1.009   | 0.31311   |              |
+| **Loans**                      | 0.34406   | 0.21044    | 1.635   | 0.10205   |              |
+| **Turnover**                   | -0.21333  | 0.33877    | -0.630  | 0.52888   |              |
+| **EBITDA**                     | 0.14363   | 0.42098    | 0.341   | 0.73297   |              |
+| **Net_income**                 | -12.48034 | 28.78873   | -0.434  | 0.66464   |              |
+| **Tangible_fixed_assets**       | 0.12988   | 0.39019    | 0.333   | 0.73924   |              |
+| **Profit_Loss_after_tax**       | 12.25367  | 26.97032   | 0.454   | 0.64958   |              |
+| **Current_liabilities**         | 0.18736   | 0.63805    | 0.294   | 0.76903   |              |
+| **Current_assets**              | -0.21803  | 0.41994    | -0.519  | 0.60363   |              |
+| **Net_income_on_Total_Assets**  | -1.42109  | 0.18349    | -7.745  | 9.56e-15  | ***          |
+| **Leverage**                    | -0.61194  | 0.23931    | -2.557  | 0.01056   | *            |
+| **Tangible_on_total_assets**    | -0.56079  | 0.20922    | -2.680  | 0.00735   | **           |
+
+### Model Performance:
+- **Null deviance:** 715.20 (on 1434 degrees of freedom)  
+- **Residual deviance:** 551.92 (on 1420 degrees of freedom)  
+- **AIC:** 581.92  
+- **Fisher Scoring Iterations:** 6  
+
+#### Significance codes:
+- `***` = p < 0.001 (Highly Significant)  
+- `**` = p < 0.01 (Moderately Significant)  
+- `*` = p < 0.05 (Significant)  
+
+
+
+
+
+
+## Bayesian Learning
+
+
+
+
+
+## Conclusions
 
 
 
