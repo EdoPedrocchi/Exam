@@ -112,23 +112,27 @@ correlation matrix
 
 ### Logistic regression
 
-| Variable                      | Estimate  | Std. Error | z value | Pr(>|z|)  | Significance |
-|--------------------------------|----------|------------|---------|-----------|--------------|
-| **(Intercept)**                | -3.27901  | 0.26411    | -12.415 | < 2e-16   | ***          |
-| **Total_assets**               | 0.05921   | 1.13432    | 0.052   | 0.95837   |              |
-| **Shareholders_funds**         | -0.25349  | 0.53592    | -0.473  | 0.63621   |              |
-| **Long_term_debt**             | 0.27565   | 0.27326    | 1.009   | 0.31311   |              |
-| **Loans**                      | 0.34406   | 0.21044    | 1.635   | 0.10205   |              |
-| **Turnover**                   | -0.21333  | 0.33877    | -0.630  | 0.52888   |              |
-| **EBITDA**                     | 0.14363   | 0.42098    | 0.341   | 0.73297   |              |
-| **Net_income**                 | -12.48034 | 28.78873   | -0.434  | 0.66464   |              |
-| **Tangible_fixed_assets**       | 0.12988   | 0.39019    | 0.333   | 0.73924   |              |
-| **Profit_Loss_after_tax**       | 12.25367  | 26.97032   | 0.454   | 0.64958   |              |
-| **Current_liabilities**         | 0.18736   | 0.63805    | 0.294   | 0.76903   |              |
-| **Current_assets**              | -0.21803  | 0.41994    | -0.519  | 0.60363   |              |
-| **Net_income_on_Total_Assets**  | -1.42109  | 0.18349    | -7.745  | 9.56e-15  | ***          |
-| **Leverage**                    | -0.61194  | 0.23931    | -2.557  | 0.01056   | *            |
-| **Tangible_on_total_assets**    | -0.56079  | 0.20922    | -2.680  | 0.00735   | **           |
+## Logistic Regression Results
+ecco
+
+| Variable                     | Estimate   | Std. Error | z value  | Pr(>|z|)   | Significance |
+|------------------------------|------------|------------|---------|------------|--------------|
+| **Intercept**                | -3.27901   | 0.26411    | -12.415 | < 2e-16    | ***          |
+| **Total assets**             | 0.05921    | 1.13432    | 0.052   | 0.95837    |              |
+| **Shareholders' funds**      | -0.25349   | 0.53592    | -0.473  | 0.63621    |              |
+| **Long-term debt**           | 0.27565    | 0.27326    | 1.009   | 0.31311    |              |
+| **Loans**                    | 0.34406    | 0.21044    | 1.635   | 0.10205    |              |
+| **Turnover**                 | -0.21333   | 0.33877    | -0.630  | 0.52888    |              |
+| **EBITDA**                   | 0.14363    | 0.42098    | 0.341   | 0.73297    |              |
+| **Net income**               | -12.48034  | 28.78873   | -0.434  | 0.66464    |              |
+| **Tangible fixed assets**     | 0.12988    | 0.39019    | 0.333   | 0.73924    |              |
+| **Profit/Loss after tax**     | 12.25367   | 26.97032   | 0.454   | 0.64958    |              |
+| **Current liabilities**       | 0.18736    | 0.63805    | 0.294   | 0.76903    |              |
+| **Current assets**            | -0.21803   | 0.41994    | -0.519  | 0.60363    |              |
+| **Net income/Total Assets**   | -1.42109   | 0.18349    | -7.745  | 9.56e-15   | ***          |
+| **Leverage**                  | -0.61194   | 0.23931    | -2.557  | 0.01056    | *            |
+| **Tangible/Total Assets**     | -0.56079   | 0.20922    | -2.680  | 0.00735    | **           |
+
 
 ### Model Performance:
 - **Null deviance:** 715.20 (on 1434 degrees of freedom)  
@@ -141,13 +145,256 @@ correlation matrix
 - `**` = p < 0.01 (Moderately Significant)  
 - `*` = p < 0.05 (Significant)  
 
+### odds ratio
+## Exponentiated Coefficients (Odds Ratios)
+
+| Variable                     | exp(Estimate) | Interpretation |
+|------------------------------|--------------|----------------|
+| **Intercept**                | 0.03767      | Baseline odds of Flag = 1 |
+| **Total assets**             | 1.0610       | A 1-unit increase → 6.1% higher odds |
+| **Shareholders' funds**      | 0.7761       | A 1-unit increase → 22.4% lower odds |
+| **Long-term debt**           | 1.3174       | A 1-unit increase → 31.7% higher odds |
+| **Loans**                    | 1.4107       | A 1-unit increase → 41.1% higher odds |
+| **Turnover**                 | 0.8079       | A 1-unit increase → 19.2% lower odds |
+| **EBITDA**                   | 1.1545       | A 1-unit increase → 15.4% higher odds |
+| **Net income**               | 3.80e-06     | Near zero, suggests no meaningful effect |
+| **Tangible fixed assets**     | 1.1387       | A 1-unit increase → 13.9% higher odds |
+| **Profit/Loss after tax**     | 209750.6     | Extremely large effect, check data validity |
+| **Current liabilities**       | 1.2061       | A 1-unit increase → 20.6% higher odds |
+| **Current assets**            | 0.8041       | A 1-unit increase → 19.6% lower odds |
+| **Net income/Total Assets**   | 0.2415       | A 1-unit increase → 75.9% lower odds |
+| **Leverage**                  | 0.5423       | A 1-unit increase → 45.8% lower odds |
+| **Tangible/Total Assets**     | 0.5708       | A 1-unit increase → 42.9% lower odds |
+
+### 📝 Interpretation Notes:
+- Values **> 1** indicate **higher odds** of `Flag = 1` when the variable increases.
+- Values **< 1** indicate **lower odds** of `Flag = 1` when the variable increases.
+- **Extremely large or small values** (e.g., `Net Income` or `Profit/Loss after tax`) might indicate **data issues** or **outliers** affecting the model.
+
+
+  ### sensitivity
+ 1-fnr
+[1] 0.5238095
+ ### specificity
+ 1-fpr
+[1] 0.7132867
 
 
 
+## stepwise regressione
+## Coefficients
+
+| Variable                     | Estimate  | Std. Error | z value | Pr(>|z|)  | Significance |
+|------------------------------|-----------|------------|---------|----------|--------------|
+| (Intercept)                  | -3.3702   | 0.1879     | -17.940 | < 2e-16  | ***          |
+| Long_term_debt               | 0.3258    | 0.1398     | 2.330   | 0.01982  | *            |
+| Loans                        | 0.3024    | 0.1672     | 1.809   | 0.07052  | .            |
+| Net_income                   | -24.8944  | 13.8851    | -1.793  | 0.07299  | .            |
+| Profit_Loss_after_tax        | 23.8048   | 13.1067    | 1.816   | 0.06933  | .            |
+| Current_liabilities          | 0.3533    | 0.1481     | 2.385   | 0.01707  | *            |
+| Current_assets               | -0.3468   | 0.2183     | -1.589  | 0.11204  |              |
+| Net_income_on_Total_Assets   | -1.4082   | 0.1759     | -8.006  | 1.19e-15 | ***          |
+| Leverage                     | -0.6122   | 0.2212     | -2.768  | 0.00565  | **           |
+| Tangible_on_total_assets     | -0.5393   | 0.1683     | -3.204  | 0.00135  | **           |
+
+**Significance codes:**  
+- `***` = 0.001  
+- `**` = 0.01  
+- `*` = 0.05  
+- `.` = 0.1  
+
+---
+
+### Model Summary
+
+- **Dispersion parameter**: 1 (binomial family)
+- **Null deviance**: 715.20 (df = 1434)
+- **Residual deviance**: 552.56 (df = 1425)
+- **AIC**: 572.56
+- **Number of Fisher Scoring iterations**: 6
+
+
+## Chi-square test of the two logistic regressions
+
+Resid. Df	Resid. Dev	Df	Deviance	Pr(>Chi)
+1 (Model 1)	1425	552.56		
+2 (Model 2)	1420	551.92	5	0.634
+
+
+Resid. Df: Remaining degrees of freedom for each model. Model 2 has fewer degrees of freedom (1420 vs. 1425) because it includes more variables.
+Resid. Dev: Residual deviance for each model. Lower values indicate a better fit to the data.
+Df: Difference in degrees of freedom between the two models (5 in this case).
+Deviance: Difference between the residual deviance of the two models (0.634). A low value suggests that the more complex model (fit1) does not significantly reduce the deviance compared to the simpler model (fit_step).
+Pr(>Chi): P-value from the Chi-square test. 0.9864 is very high, indicating no statistical evidence to prefer the more complex model.
+Conclusion
+Since the p-value 0.9864 is much higher than any standard significance threshold (e.g., 0.05 or 0.01), there is no evidence that the more complex model is significantly better than the simpler one.
+In practice, adding extra variables in Model 2 does not provide a significant improvement, so the simpler model might be preferable to avoid overfitting.
+
+
+
+![f35140d9-96aa-4e19-951d-59af58ca07d5](https://github.com/user-attachments/assets/de9a27e7-71b3-4e82-92f0-b10c1f759b6c)
+
+
+
+
+![a668b41e-bdd2-4fbd-89df-c76283eec93c](https://github.com/user-attachments/assets/6f16933a-1b69-45a8-9d4b-bedf028a8f9c)
+
+
+
+![63bd3e64-550c-4810-83d5-6fd26b8050b8](https://github.com/user-attachments/assets/722e572e-8888-4c5d-a7d8-d6de4f78a2c5)
+
+
+
+
+
+
+
+
+##TREEE
+
+## Random Forest
+
+![c2119b21-d245-42e2-bf0c-0c3b2bb4aaa8](https://github.com/user-attachments/assets/2263a09d-cd0e-4eb2-86ba-c8acfa0e076f)
+
+![d42ca0c9-2d21-4aac-ac68-d81a6226467b](https://github.com/user-attachments/assets/6c5755f1-7c95-4e08-a7b7-40a3febd5652)
+
+
+
+## Neural Network
 
 
 ## Bayesian Learning
 
+
+# Bayesian Logistic Regression (MCMC)
+
+## Model Info
+- **Function**: `stan_glm`
+- **Family**: `binomial [logit]`
+- **Formula**: `Flag ~ .`
+- **Algorithm**: `sampling`
+- **Posterior Sample Size**: `4000`
+- **Observations**: `2049`
+- **Predictors**: `15`
+
+---
+
+## Estimates
+
+| Variable                   | Mean   | Std. Dev. | 10%    | 50%    | 90%    |
+|----------------------------|--------|----------|--------|--------|--------|
+| **(Intercept)**            | -3.040 | 0.119    | -3.193 | -3.038 | -2.891 |
+| **Total_assets**           | -0.376 | 0.829    | -1.449 | -0.366 |  0.688 |
+| **Shareholders_funds**     | -0.299 | 0.403    | -0.814 | -0.300 |  0.209 |
+| **Long_term_debt**         |  0.528 | 0.210    |  0.267 |  0.522 |  0.799 |
+| **Loans**                  |  0.069 | 0.160    | -0.137 |  0.071 |  0.270 |
+| **Turnover**               |  0.025 | 0.160    | -0.175 |  0.026 |  0.225 |
+| **EBITDA**                 |  0.321 | 0.211    |  0.051 |  0.316 |  0.597 |
+| **Net_income**             | -0.020 | 1.846    | -2.371 |  0.022 |  2.235 |
+| **Tangible_fixed_assets**  | -0.062 | 0.259    | -0.409 | -0.052 |  0.259 |
+| **Profit_Loss_after_tax**  |  0.613 | 1.730    | -1.501 |  0.569 |  2.777 |
+| **Current_liabilities**    |  0.759 | 0.484    |  0.164 |  0.728 |  1.398 |
+| **Current_assets**         | -0.481 | 0.283    | -0.841 | -0.467 | -0.132 |
+| **Net_income_on_Total_Assets** | -1.098 | 0.123 | -1.257 | -1.097 | -0.941 |
+| **Leverage**               | -0.748 | 0.195    | -0.998 | -0.741 | -0.505 |
+| **Tangible_on_total_assets** | -0.289 | 0.154  | -0.485 | -0.288 | -0.096 |
+
+---
+
+## Fit Diagnostics
+
+| Metric    | Mean  | Std. Dev. | 10%  | 50%  | 90%  |
+|-----------|-------|----------|------|------|------|
+| **mean_PPD** | 0.068 | 0.007  | 0.060 | 0.068 | 0.078 |
+
+> **Note**: `mean_PPD` is the sample average posterior predictive distribution of the outcome variable.  
+
+---
+
+## MCMC Diagnostics
+
+| Variable                   | MCSE  | Rhat | n_eff |
+|----------------------------|------|------|------|
+| **(Intercept)**            | 0.002 | 1.000 | 3295 |
+| **Total_assets**           | 0.019 | 1.001 | 1935 |
+| **Shareholders_funds**     | 0.009 | 1.000 | 2123 |
+| **Long_term_debt**         | 0.005 | 1.000 | 1541 |
+| **Loans**                  | 0.003 | 1.001 | 3627 |
+| **Turnover**               | 0.003 | 1.000 | 3457 |
+| **EBITDA**                 | 0.004 | 1.001 | 2756 |
+| **Net_income**             | 0.041 | 1.003 | 2024 |
+| **Tangible_fixed_assets**  | 0.006 | 1.000 | 1781 |
+| **Profit_Loss_after_tax**  | 0.038 | 1.003 | 2052 |
+| **Current_liabilities**    | 0.012 | 1.000 | 1725 |
+| **Current_assets**         | 0.006 | 1.000 | 2095 |
+| **Net_income_on_Total_Assets** | 0.002 | 1.000 | 3844 |
+| **Leverage**               | 0.004 | 1.001 | 2579 |
+| **Tangible_on_total_assets** | 0.003 | 1.003 | 2676 |
+| **mean_PPD**               | 0.000 | 1.000 | 5082 |
+| **log-posterior**          | 0.076 | 1.002 | 1427 |
+
+> **Interpretation**:
+> - **MCSE (Monte Carlo Standard Error)**: Indicates the error in MCMC estimation.
+> - **Rhat (Potential Scale Reduction Factor)**: Should be **≈1.000** for convergence.
+> - **n_eff (Effective Sample Size)**: Higher values indicate better sampling efficiency.
+
+---
+
+### **Key Takeaways**
+✔️ Most variables have well-defined credible intervals.  
+✔️ `Net_income_on_Total_Assets` and `Leverage` show **strong negative effects**.  
+✔️ `Current_liabilities` and `EBITDA` have **positive effects**.  
+✔️ The model appears **well-converged** (`Rhat ≈ 1.000`).  
+✔️ Bayesian logistic regression provides **credible intervals** instead of p-values.
+
+---
+
+### 📌 **How to Interpret Bayesian Results**
+- If a **credible interval** (10%-90%) **does not contain zero**, the predictor is likely **significant**.
+- Unlike frequentist regression, Bayesian inference provides **uncertainty estimates** directly.
+- If `Rhat` is far from **1.000**, **increase iterations** for better convergence.
+
+
+
+## 50% Credible Intervals for Model Parameters
+
+| Variable                   | 25%   | 75%   |
+|----------------------------|------|------|
+| **(Intercept)**            | -3.120 | -2.958 |
+| **Total_assets**           | -0.927 |  0.183 |
+| **Shareholders_funds**     | -0.571 | -0.044 |
+| **Long_term_debt**         |  0.383 |  0.660 |
+| **Loans**                  | -0.037 |  0.177 |
+| **Turnover**               | -0.074 |  0.128 |
+| **EBITDA**                 |  0.180 |  0.461 |
+| **Net_income**             | -1.204 |  1.197 |
+| **Tangible_fixed_assets**  | -0.228 |  0.117 |
+| **Profit_Loss_after_tax**  | -0.528 |  1.721 |
+| **Current_liabilities**    |  0.409 |  1.068 |
+| **Current_assets**         | -0.659 | -0.287 |
+| **Net_income_on_Total_Assets** | -1.183 | -1.013 |
+| **Leverage**               | -0.876 | -0.612 |
+| **Tangible_on_total_assets** | -0.389 | -0.184 |
+
+---
+
+### **Interpretation**
+- The **credible interval** (CI) represents the **range where the true coefficient value is likely to fall** with **50% probability**.
+- **Predictors whose intervals do not include zero** suggest a **stronger effect**.
+- For example:
+  - `Net_income_on_Total_Assets` and `Leverage` have **negative effects** (CIs entirely below 0).
+  - `Long_term_debt`, `EBITDA`, and `Current_liabilities` have **positive effects**.
+  - `Net_income` and `Profit_Loss_after_tax` have **wide CIs**, indicating **higher uncertainty**.
+
+📌 **If an interval includes zero, the predictor’s effect may be weak or uncertain.**  
+
+
+
+![e4c41338-070e-4b0b-bf49-80ef1626023e](https://github.com/user-attachments/assets/c71970a1-f298-405d-bf35-9c1c517fd0e2)
+
+Density plot of posterior distributions
+
+![c50bdf26-ade2-4c0f-818d-d68cc4787f5c](https://github.com/user-attachments/assets/dea31467-0855-4bcf-89fd-a31b8d24f02f)
 
 
 
