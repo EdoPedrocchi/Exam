@@ -22,7 +22,7 @@ To address this, the project evaluates and compares 2 approaches:
 
 
 ## Dataset  
-The dataset includes financial indicators (in standardised values) for a sample of 2049 Italian small-medium enterprises (SMEs) in 2018 and information about their status (Flag variable; 0=Active, 1=Defaulted) one year later.
+The dataset includes financial indicators for a sample of 2049 Italian small-medium enterprises (SMEs) in 2018 and information about their status (Flag variable; 0=Active, 1=Defaulted) one year later.
 
 The variables of the dataset:
 - Flag  
@@ -44,10 +44,10 @@ The variables of the dataset:
 
 
 ## EDA (Exploratory Data Analysis)  
-Cheked with command "print(sum(is.na(data)))" if there are missing values.
-The result is 0 missing values.
+🔹Cheked with command "print(sum(is.na(data)))" if there are missing values.
+The result is `0 missing values`.
 
-with the command: "summary(data)" we anaylze our variables:
+🔹with the command: "summary(data)" we anaylze our variables:
 
 | Statistic   | Flag     | Total_assets | Shareholders_funds | Long_term_debt | Loans      | Turnover   | EBITDA     | Net_income  | Tangible_fixed_assets | Profit_Loss_after_tax | Current_liabilities | Current_assets | Net_income_on_Total_Assets | Leverage   | Tangible_on_total_assets |
 |-------------|----------|--------------|--------------------|----------------|------------|------------|------------|--------------|-----------------------|-----------------------|--------------------|----------------|---------------------------|------------|--------------------------|
@@ -59,9 +59,9 @@ with the command: "summary(data)" we anaylze our variables:
 | Max.        | 1.00000  | 18.908105     | 17.51151            | 15.399444       | 24.976590  | 26.97940   | 21.74522   | 15.79219     | 15.414282              | 16.601217              | 20.834466           | 24.83200        |  3.409903                  |  4.072354  |  3.114502                |
 
 
-**The default rate is  0.06832601**
+🔹**The default rate is `0.06832601`**
 
-**Distribution of each variable**
+🔹**Distribution of each variable**
 
 ![801d4885-2e7f-418e-a35a-8151cd4562d4](https://github.com/user-attachments/assets/da9c68df-d362-40a2-8c18-138a66e9fdc6)
 
@@ -83,7 +83,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 
 
 
-**Correlation matrix**
+🔹**Correlation matrix**
 
 | **Variable**               | **Flag** | **Total_assets** | **Shareholders_funds** | **Long_term_debt** | **Loans** | **Turnover** | **EBITDA** | **Net_income** | **Tangible_fixed_assets** | **Profit_Loss_after_tax** | **Current_liabilities** | **Current_assets** | **Net_income_on_Total_Assets** | **Leverage** | **Tangible_on_total_assets** |
 |----------------------------|----------|------------------|------------------------|--------------------|-----------|--------------|------------|----------------|----------------------------|--------------------------|------------------------|--------------------|--------------------------------|--------------|----------------------------|
@@ -104,9 +104,9 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 | **Tangible_on_total_assets**| -0.062352 | 0.196559         | 0.210004               | 0.271232           | 0.073458  | -0.012307    | 0.157352   | -0.054412      | 0.553759                  | -0.054582               | 0.095107               | -0.058964           | -0.071141                    | 0.374895     | 1.000000                  |
 
 
-## Financial Learning
+# Financial Learning
 
-### Logistic regression
+## 🔶 Logistic regression
 
 | Variable                     | Estimate   | Std. Error | z value  | Pr(>|z|)   | Significance |
 |------------------------------|------------|------------|---------|------------|--------------|
@@ -137,7 +137,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 - `**` = p < 0.01 (Moderately Significant)  
 - `*` = p < 0.05 (Significant)  
 
-**odds ratio**
+**Odds ratio**
 
 | Variable                     | exp(Estimate) | Interpretation |
 |------------------------------|--------------|----------------|
@@ -163,17 +163,16 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 - **Extremely large or small values** (e.g., `Net Income` or `Profit/Loss after tax`) might indicate **data issues** or **outliers** affecting the model.
 
 
-  ### sensitivity
- 1-fnr
- 0.5238095
- ### specificity
- 1-fpr
- 0.7132867
+ **sensitivity** `0.5238095`
+ 
+ 
+**specificity**  `0.7132867`
 
 
 
-## stepwise regressione
-## Coefficients
+## 🔶stepwise regression
+ 
+**Coefficients**
 
 | Variable                     | Estimate  | Std. Error | z value | Pr(>|z|)  | Significance |
 |------------------------------|-----------|------------|---------|----------|--------------|
@@ -193,8 +192,6 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 - `**` = 0.01  
 - `*` = 0.05  
 - `.` = 0.1  
-
----
 
 ### Model Summary
 
@@ -221,14 +218,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 
 ### Conclusion:
 Since the p-value **0.9864** is much higher than any standard significance threshold (e.g., 0.05 or 0.01), there is no evidence that the more complex model is significantly better than the simpler one.  
-🔹 **In practice, adding extra variables in Model 2 does not provide a significant improvement, so the simpler model might be preferable to avoid overfitting.** 🚀
-
-
-
-
-![f35140d9-96aa-4e19-951d-59af58ca07d5](https://github.com/user-attachments/assets/de9a27e7-71b3-4e82-92f0-b10c1f759b6c)
-
-
+**Aadding extra variables in Model 2 does not provide a significant improvement, so the simpler model might be preferable to avoid overfitting.** 
 
 
 ![a668b41e-bdd2-4fbd-89df-c76283eec93c](https://github.com/user-attachments/assets/6f16933a-1b69-45a8-9d4b-bedf028a8f9c)
@@ -240,8 +230,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 
 
 
-## Random Forest
-
+## 🔶Random Forest
 
 
 | Actual \ Predicted | 0 (Negative) | 1 (Positive) | Class Error |
@@ -249,9 +238,8 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 | **0 (Negative)**  | 1324        | 13          | 0.97%       |
 | **1 (Positive)**  | 42          | 56          | 42.86%      |
 
-**🔹 Accuracy:** **96.14%** ✅  
+**Accuracy:** **96.14%** 
 
-Se vuoi aggiungere altre metriche (Precision, Recall, F1-score), fammelo sapere! 🚀
 
 ![c2119b21-d245-42e2-bf0c-0c3b2bb4aaa8](https://github.com/user-attachments/assets/2263a09d-cd0e-4eb2-86ba-c8acfa0e076f)
 
@@ -259,45 +247,11 @@ Se vuoi aggiungere altre metriche (Precision, Recall, F1-score), fammelo sapere!
 
 
 
-## Neural Network
 
 
 # Bayesian Learning
 
-## Bayesian Logistic Regression  (MCMC)
-
-The table below presents the 95% Highest Density Interval (HDI) for each parameter in the Bayesian logistic regression model using Markov Chain Monte Carlo (MCMC) sampling. The HDI provides the range of the most credible values for each parameter.
-
-| Parameter                  | 95% HDI                |
-|----------------------------|------------------------|
-| (Intercept)                | [-3.27, -2.81]        |
-| Total_assets               | [-2.00,  1.24]        |
-| Shareholders_funds         | [-1.16,  0.44]        |
-| Long_term_debt             | [ 0.12,  0.95]        |
-| Loans                      | [-0.24,  0.39]        |
-| Turnover                   | [-0.30,  0.33]        |
-| EBITDA                     | [-0.08,  0.73]        |
-| Net_income                 | [-3.67,  3.51]        |
-| Tangible_fixed_assets      | [-0.56,  0.45]        |
-| Profit_Loss_after_tax      | [-2.77,  3.95]        |
-| Current_liabilities        | [-0.15,  1.69]        |
-| Current_assets             | [-1.02,  0.10]        |
-| Net_income_on_Total_Assets | [-1.33, -0.86]        |
-| Leverage                   | [-1.14, -0.38]        |
-| Tangible_on_total_assets   | [-0.59,  0.02]        |
-
-### Interpretation
-- Parameters with HDIs entirely above or below zero suggest a higher probability of having a meaningful effect. For example, **Long_term_debt** has a positive HDI [0.12, 0.95], indicating a likely positive association with the dependent variable.
-- Conversely, **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
-- Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
-
-These results should be interpreted in context with domain knowledge and additional model diagnostics to confirm their significance and robustness.
-
-
-
-
-##now we train another logisitc regressione to make predictions.
-
+## 🔶 Bayesian Logistic Regression  (MCMC)
 
 
 ### Model Information
@@ -328,6 +282,37 @@ These results should be interpreted in context with domain knowledge and additio
 | Net_income_on_Total_Assets   | -1.400 | 0.179 | -1.630 | -1.395 | -1.172 |
 | Leverage                     | -0.649 | 0.242 | -0.959 | -0.641 | -0.349 |
 | Tangible_on_total_assets     | -0.588 | 0.213 | -0.862 | -0.586 | -0.320 |
+
+
+
+
+The table below presents the 95% Highest Density Interval (HDI) for each parameter in the Bayesian logistic regression model using Markov Chain Monte Carlo (MCMC) sampling. The HDI provides the range of the most credible values for each parameter.
+
+| Parameter                  | 95% HDI                |
+|----------------------------|------------------------|
+| (Intercept)                | [-3.27, -2.81]        |
+| Total_assets               | [-2.00,  1.24]        |
+| Shareholders_funds         | [-1.16,  0.44]        |
+| Long_term_debt             | [ 0.12,  0.95]        |
+| Loans                      | [-0.24,  0.39]        |
+| Turnover                   | [-0.30,  0.33]        |
+| EBITDA                     | [-0.08,  0.73]        |
+| Net_income                 | [-3.67,  3.51]        |
+| Tangible_fixed_assets      | [-0.56,  0.45]        |
+| Profit_Loss_after_tax      | [-2.77,  3.95]        |
+| Current_liabilities        | [-0.15,  1.69]        |
+| Current_assets             | [-1.02,  0.10]        |
+| Net_income_on_Total_Assets | [-1.33, -0.86]        |
+| Leverage                   | [-1.14, -0.38]        |
+| Tangible_on_total_assets   | [-0.59,  0.02]        |
+
+**Interpretation**
+- Parameters with HDIs entirely above or below zero suggest a higher probability of having a meaningful effect. For example, **Long_term_debt** has a positive HDI [0.12, 0.95], indicating a likely positive association with the dependent variable.
+- Conversely, **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
+- Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
+
+These results should be interpreted in context with domain knowledge and additional model diagnostics to confirm their significance and robustness.
+
 
 ### Fit Diagnostics
 | Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
@@ -390,14 +375,6 @@ These insights can help improve model interpretability and guide feature selecti
 
 
 
-
-![e0eec403-cd7b-4aa1-8414-53c7c2b4fdb0](https://github.com/user-attachments/assets/73178355-801d-4361-9e13-34e62281129b)
-
-
-![462d7719-18a8-411f-9f01-de9b74e5ff09](https://github.com/user-attachments/assets/8b759400-dadd-47ca-9c0c-dd99a169755e)
-
-
-
 ### 95% Highest Density Intervals (HDI) for Coefficients
 | Predictor                     | 95% HDI (Lower) | 95% HDI (Upper) |
 |--------------------------------|----------------|----------------|
@@ -435,80 +412,84 @@ The result of predictions:
 
 
 
+![e0eec403-cd7b-4aa1-8414-53c7c2b4fdb0](https://github.com/user-attachments/assets/73178355-801d-4361-9e13-34e62281129b)
 
-## Naive Bayes classifier
+
+![462d7719-18a8-411f-9f01-de9b74e5ff09](https://github.com/user-attachments/assets/8b759400-dadd-47ca-9c0c-dd99a169755e)
+
+
+
+
+
+## 🔶 Naive Bayes classifier
 
 ## A-Priori Probabilities
+
 | Class (Y) | Probability |
 |-----------|------------|
-| 0         | 0.9317     |
-| 1         | 0.0683     |
+| **0**     | 0.9317     |
+| **1**     | 0.0683     |
 
 ## A-Priori Class Counts
+
 | Class (Y) | Count |
 |-----------|-------|
-| 0         | 1337  |
-| 1         | 98    |
+| **0**     | 1337  |
+| **1**     | 98    |
 
 ---
 
 ## Conditional Probabilities
+
 | Feature                      | Mean (Y=0) | Std Dev (Y=0) | Mean (Y=1) | Std Dev (Y=1) |
 |------------------------------|------------|---------------|------------|---------------|
-| Total_assets                 | -0.0354    | 0.4804        | 0.2614     | 2.6784        |
-| Shareholders_funds           | -0.0152    | 0.8629        | 0.0776     | 1.7475        |
-| Long_term_debt               | 0.0081     | 0.8656        | -0.0324    | 1.6075        |
-| Loans                        | -0.0335    | 0.5117        | 0.2473     | 2.6895        |
-| Turnover                     | -0.0440    | 0.2373        | 0.1527     | 2.8761        |
-| EBITDA                       | -0.0318    | 0.4906        | 0.0760     | 3.0077        |
-| Net_income                   | 0.0089     | 0.8653        | -0.1795    | 1.8981        |
-| Tangible_fixed_assets        | 0.0111     | 0.8989        | 0.0284     | 1.7278        |
-| Profit_Loss_after_tax        | 0.0174     | 0.9191        | -0.1877    | 2.0061        |
-| Current_liabilities          | -0.0458    | 0.3827        | 0.3657     | 3.0517        |
-| Current_assets               | -0.0380    | 0.5742        | 0.2465     | 2.9385        |
-| Net_income_on_Total_Assets   | 0.0931     | 0.8401        | -1.1182    | 1.9394        |
-| Leverage                     | 0.0575     | 1.0458        | -0.3003    | 0.7654        |
-| Tangible_on_total_assets     | 0.0391     | 1.0056        | -0.3054    | 0.9909        |
+| **Total_assets**             | -0.0354    | 0.4804        | 0.2614     | 2.6784        |
+| **Shareholders_funds**       | -0.0152    | 0.8629        | 0.0776     | 1.7475        |
+| **Long_term_debt**           | 0.0081     | 0.8656        | -0.0324    | 1.6075        |
+| **Loans**                    | -0.0335    | 0.5117        | 0.2473     | 2.6895        |
+| **Turnover**                 | -0.0440    | 0.2373        | 0.1527     | 2.8761        |
+| **EBITDA**                   | -0.0318    | 0.4906        | 0.0760     | 3.0077        |
+| **Net_income**               | 0.0089     | 0.8653        | -0.1795    | 1.8981        |
+| **Tangible_fixed_assets**     | 0.0111     | 0.8989        | 0.0284     | 1.7278        |
+| **Profit_Loss_after_tax**     | 0.0174     | 0.9191        | -0.1877    | 2.0061        |
+| **Current_liabilities**       | -0.0458    | 0.3827        | 0.3657     | 3.0517        |
+| **Current_assets**            | -0.0380    | 0.5742        | 0.2465     | 2.9385        |
+| **Net_income_on_Total_Assets**| 0.0931     | 0.8401        | -1.1182    | 1.9394        |
+| **Leverage**                 | 0.0575     | 1.0458        | -0.3003    | 0.7654        |
+| **Tangible_on_total_assets**  | 0.0391     | 1.0056        | -0.3054    | 0.9909        |
 
 ---
 
 ## Confusion Matrix & Performance Metrics
 
 ### Confusion Matrix
+
 | Predicted | Actual 0 | Actual 1 |
 |-----------|---------|---------|
 | **0**     | 554     | 33      |
 | **1**     | 18      | 9       |
 
 ### Performance Metrics
-| Metric                  | Value  |
-|-------------------------|--------|
-| **Accuracy**            | 91.69% |
-| 95% Confidence Interval | (89.22%, 93.75%) |
-| No Information Rate     | 93.16% |
-| P-Value (Acc > NIR)     | 0.9322 |
-| **Kappa**               | 0.2191 |
-| McNemar's Test P-Value  | 0.04995 |
-| **Sensitivity**         | 96.85% |
-| **Specificity**         | 21.43% |
-| **Positive Predictive Value** | 94.38% |
-| **Negative Predictive Value** | 33.33% |
-| Prevalence              | 93.16% |
-| Detection Rate          | 90.23% |
-| Detection Prevalence    | 95.60% |
-| **Balanced Accuracy**   | 59.14% |
 
----
+| Metric                          | Value  |
+|----------------------------------|--------|
+| **Accuracy**                     | 91.69% |
+| **95% Confidence Interval**       | (89.22%, 93.75%) |
+| **No Information Rate**           | 93.16% |
+| **P-Value (Acc > NIR)**           | 0.9322 |
+| **Kappa**                         | 0.2191 |
+| **McNemar's Test P-Value**        | 0.04995 |
+| **Sensitivity**                   | 96.85% |
+| **Specificity**                   | 21.43% |
+| **Positive Predictive Value**      | 94.38% |
+| **Negative Predictive Value**      | 33.33% |
+| **Prevalence**                     | 93.16% |
+| **Detection Rate**                 | 90.23% |
+| **Detection Prevalence**           | 95.60% |
+| **Balanced Accuracy**              | 59.14% |
 
-## Interpretation
-The Naïve Bayes classifier achieved an accuracy of **91.69%**, indicating strong overall performance. However, the model struggles with correctly predicting instances of class **1**, as reflected in the relatively low true positive count (9) and the number of false negatives (33). This suggests potential areas for improvement, such as:
-- **Feature Engineering**: Refining the features to enhance class separability.
-- **Resampling Techniques**: Addressing class imbalance through oversampling (SMOTE) or undersampling.
-- **Model Tuning**: Experimenting with different probability estimation methods to improve minority class detection.
 
-**Positive Class:** 0
 
-Further adjustments could help improve classification performance, particularly for the minority class (Y=1).
 
 
 ## Conclusions
