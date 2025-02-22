@@ -324,8 +324,8 @@ The table below presents the 95% Highest Density Interval (HDI) for each paramet
 | Tangible_on_total_assets   | [-0.59,  0.02]        |
 
 **Interpretation**
-- Parameters with HDIs entirely above or below zero suggest a higher probability of having a meaningful effect. For example, **Long_term_debt** has a positive HDI [0.12, 0.95], indicating a likely positive association with the dependent variable.
-- Conversely, **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
+- **Long_term_debt** has a positive HDI [0.12, 0.95], indicating a likely positive association with the dependent variable.
+- **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
 - Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
 
 
@@ -359,7 +359,7 @@ The table below presents the 95% Highest Density Interval (HDI) for each paramet
 
 - The model shows a well-calibrated posterior distribution with Rhat values close to 1, indicating convergence.
 - Key predictors with strong effects include **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets**, all showing significant negative coefficients.
-- Fit diagnostics indicate a good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
+- Good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
 
 
 ### 50% Credible Intervals for Coefficients
@@ -385,13 +385,7 @@ The table below presents the 95% Highest Density Interval (HDI) for each paramet
 ### Interpretation
 - The 50% credible intervals provide a refined understanding of the parameter estimates, indicating the most likely range for each coefficient.
 - **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets** show strong negative effects with tight credible intervals, suggesting a significant influence on the target variable.
-- Some predictors, such as **Loans** and **EBITDA**, have intervals that do not include zero, indicating a potential positive effect on the outcome.
-- The inclusion of zero in the credible intervals of certain variables, like **Total_assets**, suggests uncertainty about their impact.
-
-These insights can help improve model interpretability and guide feature selection for better predictive performance.
-
-
-
+-  **Loans** and **EBITDA**, have intervals that do not include zero, indicating a potential positive effect on the outcome.
 
 
 ### 95% Highest Density Intervals (HDI) for Coefficients
@@ -415,11 +409,7 @@ These insights can help improve model interpretability and guide feature selecti
 | Tangible_on_total_assets     | -1.02 | -0.17 |
 
 ### Interpretation
-- The 95% HDI represents the most credible range for each parameter, providing a more comprehensive uncertainty assessment than the 50% intervals.
 - **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets** remain strongly negative, reinforcing their significant impact.
-- Several predictors, such as **Loans** and **EBITDA**, have wide intervals that include zero, indicating uncertainty about their effect direction.
-- The broader intervals in the 95% HDI highlight the model’s overall uncertainty and emphasize the importance of further validation.
-
 
 The result of predictions:
 
