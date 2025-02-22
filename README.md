@@ -248,6 +248,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 
 ### Model Information
 
+
 | Parameter      | Value  |
 |---------------|--------|
 | Function      | stan_glm |
@@ -256,6 +257,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 | Predictors    | 15 |
 | Algorithm     | Sampling |
 | Posterior Sample Size | 4000 |
+
 
 ### Coefficients (Estimates)
 
