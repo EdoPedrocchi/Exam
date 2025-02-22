@@ -187,19 +187,11 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 | Leverage                     | -0.6122   | 0.2212     | -2.768  | 0.00565  | **           |
 | Tangible_on_total_assets     | -0.5393   | 0.1683     | -3.204  | 0.00135  | **           |
 
-**Significance codes:**  
+## Significance codes:**  
 - `***` = 0.001  
 - `**` = 0.01  
 - `*` = 0.05  
 - `.` = 0.1  
-
-### Model Summary
-
-- **Dispersion parameter**: 1 (binomial family)
-- **Null deviance**: 715.20 (df = 1434)
-- **Residual deviance**: 552.56 (df = 1425)
-- **AIC**: 572.56
-- **Number of Fisher Scoring iterations**: 6
 
 
 ## Chi-square Test of the Two Logistic Regressions
@@ -238,7 +230,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 | **0 (Negative)**  | 1324        | 13          | 0.97%       |
 | **1 (Positive)**  | 42          | 56          | 42.86%      |
 
-**Accuracy:** **96.14%** 
+**Accuracy:** **`96.14%`** 
 
 
 ![c2119b21-d245-42e2-bf0c-0c3b2bb4aaa8](https://github.com/user-attachments/assets/2263a09d-cd0e-4eb2-86ba-c8acfa0e076f)
@@ -255,6 +247,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 
 
 ### Model Information
+
 | Parameter      | Value  |
 |---------------|--------|
 | Function      | stan_glm |
@@ -265,6 +258,7 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 | Posterior Sample Size | 4000 |
 
 ### Coefficients (Estimates)
+
 | Predictor                     | Mean  | SD    | 10%   | 50%   | 90%   |
 |--------------------------------|-------|------|------|------|------|
 | (Intercept)                   | -3.248 | 0.155 | -3.452 | -3.243 | -3.048 |
