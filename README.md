@@ -518,6 +518,7 @@ The result of predictions:
 
 
 
+![84f7edee-e134-4d75-9bc8-0503d1a83893](https://github.com/user-attachments/assets/12384bf9-ee5e-4e72-8fd7-a48a88de18b3)
 
 
 # Conclusions
