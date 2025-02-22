@@ -309,11 +309,13 @@ These results should be interpreted in context with domain knowledge and additio
 
 
 ### Fit Diagnostics
+
 | Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
 |------------|------|-----|------|------|------|
 | mean_PPD   | 0.069 | 0.008 | 0.059 | 0.068 | 0.079 |
 
 ### MCMC Diagnostics
+
 | Predictor                     | mcse  | Rhat  | n_eff |
 |--------------------------------|------|------|------|
 | (Intercept)                   | 0.003 | 0.999 | 3519 |
@@ -333,12 +335,14 @@ These results should be interpreted in context with domain knowledge and additio
 | Tangible_on_total_assets     | 0.004 | 1.000 | 2988 |
 
 ### Interpretation
+
 - The model shows a well-calibrated posterior distribution with Rhat values close to 1, indicating convergence.
 - Key predictors with strong effects include **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets**, all showing significant negative coefficients.
 - Fit diagnostics indicate a good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
 
 
 ### 50% Credible Intervals for Coefficients
+
 | Predictor                     | 25%   | 75%   |
 |--------------------------------|------|------|
 | (Intercept)                   | -3.354 | -3.141 |
@@ -370,6 +374,7 @@ These insights can help improve model interpretability and guide feature selecti
 
 
 ### 95% Highest Density Intervals (HDI) for Coefficients
+
 | Predictor                     | 95% HDI (Lower) | 95% HDI (Upper) |
 |--------------------------------|----------------|----------------|
 | (Intercept)                   | -3.56 | -2.96 |
@@ -396,6 +401,7 @@ These insights can help improve model interpretability and guide feature selecti
 
 
 The result of predictions:
+
 | Predicted \ Actual | 0   | 1   |
 |--------------------|-----|-----|
 | 0                  | 567 | 37  |
