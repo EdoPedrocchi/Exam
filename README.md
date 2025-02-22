@@ -128,13 +128,6 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 | **Tangible/Total Assets**     | -0.56079   | 0.20922    | -2.680   | 0.00735    | **           |
 
 
-
-### Model Performance:
-- **Null deviance:** 715.20 (on 1434 degrees of freedom)  
-- **Residual deviance:** 551.92 (on 1420 degrees of freedom)  
-- **AIC:** 581.92  
-- **Fisher Scoring Iterations:** 6  
-
 #### Significance codes:
 - `***` = p < 0.001 (Highly Significant)  
 - `**` = p < 0.01 (Moderately Significant)  
@@ -190,7 +183,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 | Leverage                     | -0.6122   | 0.2212     | -2.768  | 0.00565  | **           |
 | Tangible_on_total_assets     | -0.5393   | 0.1683     | -3.204  | 0.00135  | **           |
 
-## Significance codes:**  
+## Significance codes:
 - `***` = 0.001  
 - `**` = 0.01  
 - `*` = 0.05  
@@ -204,10 +197,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 | **Model 1** | 1425     | 552.56     | -  | -        | -       |
 | **Model 2** | 1420     | 551.92     | 5  | 0.634    | 0.9864  |
 
-### Explanation:
-- **Resid. Df**: Remaining degrees of freedom for each model. Model 2 has fewer degrees of freedom (1420 vs. 1425) because it includes more variables.
-- **Resid. Dev**: Residual deviance for each model. Lower values indicate a better fit to the data.
-- **Df**: Difference in degrees of freedom between the two models (5 in this case).
+
 - **Deviance**: Difference between the residual deviance of the two models (0.634). A low value suggests that the more complex model does not significantly reduce the deviance compared to the simpler model.
 - **Pr(>Chi)**: P-value from the Chi-square test. **0.9864** is very high, indicating no statistical evidence to prefer the more complex model.
 
@@ -310,10 +300,8 @@ The table below presents the 95% Highest Density Interval (HDI) for each paramet
 - Conversely, **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
 - Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
 
-These results should be interpreted in context with domain knowledge and additional model diagnostics to confirm their significance and robustness.
 
-
-### Fit Diagnostics
+### Model Diagnostics
 
 | Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
 |------------|------|-----|------|------|------|
@@ -413,7 +401,7 @@ The result of predictions:
 | 1                  | 5   | 5   |
 
 
- "Accuracy: 93.16 %"
+ Accuracy: `93.16 %`
 
 
 
@@ -495,9 +483,18 @@ The result of predictions:
 
 
 
+### Comment
+
+- The class imbalance is affecting performance.
+- The model performs well overall but fails to accurately predict the minority class (Class 1).
 
 
-## Conclusions
+
+
+
+# Conclusions
+
+
 
 
 
