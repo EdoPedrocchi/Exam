@@ -300,10 +300,46 @@ Since the p-value **0.9864** is much higher than any standard significance thres
 | Leverage                     | -0.649 | 0.242 | -0.959 | -0.641 | -0.349 |
 | Tangible_on_total_assets     | -0.588 | 0.213 | -0.862 | -0.586 | -0.320 |
 
+### Model Diagnostics
+
+| Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
+|------------|------|-----|------|------|------|
+| mean_PPD   | 0.069 | 0.008 | 0.059 | 0.068 | 0.079 |
+
+
+### MCMC Diagnostics
+
+| Predictor                     | mcse  | Rhat  | n_eff |
+|--------------------------------|------|------|------|
+| (Intercept)                   | 0.003 | 0.999 | 3519 |
+| Total_assets                  | 0.022 | 1.000 | 1935 |
+| Shareholders_funds            | 0.011 | 1.001 | 2205 |
+| Long_term_debt                | 0.006 | 1.002 | 1930 |
+| Loans                         | 0.004 | 1.001 | 3440 |
+| Turnover                      | 0.005 | 1.001 | 3643 |
+| EBITDA                        | 0.007 | 1.000 | 2364 |
+| Net_income                    | 0.039 | 1.001 | 2462 |
+| Tangible_fixed_assets         | 0.008 | 1.003 | 1921 |
+| Profit_Loss_after_tax         | 0.036 | 1.001 | 2483 |
+| Current_liabilities           | 0.012 | 1.001 | 2205 |
+| Current_assets                | 0.008 | 1.002 | 2223 |
+| Net_income_on_Total_Assets   | 0.003 | 1.000 | 3629 |
+| Leverage                     | 0.005 | 1.002 | 2867 |
+| Tangible_on_total_assets     | 0.004 | 1.000 | 2988 |
 
 
 
-The table below presents the 95% Highest Density Interval (HDI) for each parameter in the Bayesian logistic regression model using Markov Chain Monte Carlo (MCMC) sampling. The HDI provides the range of the most credible values for each parameter.
+
+### Interpretation
+
+- The model shows a well-calibrated posterior distribution with Rhat values close to 1, indicating convergence.
+- Key predictors with strong effects include **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets**, all showing significant negative coefficients.
+- Good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
+
+
+
+
+ 95% Highest Density Interval (HDI) for each parameter 
 
 | Parameter                  | 95% HDI                |
 |----------------------------|------------------------|
@@ -328,38 +364,6 @@ The table below presents the 95% Highest Density Interval (HDI) for each paramet
 - **Net_income_on_Total_Assets** [-1.33, -0.86] and **Leverage** [-1.14, -0.38] both have negative intervals, suggesting they likely have a negative impact.
 - Many variables, such as **Total_assets** and **Profit_Loss_after_tax**, have HDIs that include zero, indicating uncertainty about their effect direction.
 
-
-### Model Diagnostics
-
-| Statistic  | Mean | SD  | 10%  | 50%  | 90%  |
-|------------|------|-----|------|------|------|
-| mean_PPD   | 0.069 | 0.008 | 0.059 | 0.068 | 0.079 |
-
-### MCMC Diagnostics
-
-| Predictor                     | mcse  | Rhat  | n_eff |
-|--------------------------------|------|------|------|
-| (Intercept)                   | 0.003 | 0.999 | 3519 |
-| Total_assets                  | 0.022 | 1.000 | 1935 |
-| Shareholders_funds            | 0.011 | 1.001 | 2205 |
-| Long_term_debt                | 0.006 | 1.002 | 1930 |
-| Loans                         | 0.004 | 1.001 | 3440 |
-| Turnover                      | 0.005 | 1.001 | 3643 |
-| EBITDA                        | 0.007 | 1.000 | 2364 |
-| Net_income                    | 0.039 | 1.001 | 2462 |
-| Tangible_fixed_assets         | 0.008 | 1.003 | 1921 |
-| Profit_Loss_after_tax         | 0.036 | 1.001 | 2483 |
-| Current_liabilities           | 0.012 | 1.001 | 2205 |
-| Current_assets                | 0.008 | 1.002 | 2223 |
-| Net_income_on_Total_Assets   | 0.003 | 1.000 | 3629 |
-| Leverage                     | 0.005 | 1.002 | 2867 |
-| Tangible_on_total_assets     | 0.004 | 1.000 | 2988 |
-
-### Interpretation
-
-- The model shows a well-calibrated posterior distribution with Rhat values close to 1, indicating convergence.
-- Key predictors with strong effects include **Net_income_on_Total_Assets**, **Leverage**, and **Tangible_on_total_assets**, all showing significant negative coefficients.
-- Good model performance with a mean posterior predictive distribution (mean_PPD) of **0.069**.
 
 
 ### 50% Credible Intervals for Coefficients
