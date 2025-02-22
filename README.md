@@ -15,12 +15,9 @@ The project aims to predict the default of Italian Small and Medium Enterprises 
 **"Which statistical learning approach provides the most accurate and reliable predictions for SME default risk in Italy?"**  
 
 To address this, the project evaluates and compares 2 approaches:
-1. Financial Learning (Frequentist approach)
+1. Financial Learning 
 2. Bayesian Learning
 
-Describe In general financial Learning and Bayesian learning
-
-Find research topic similar
 
 ## Dataset  
 The dataset includes financial indicators (in standardised values) for a sample of 2049 Italian small-medium enterprises (SMEs) in 2018 and information about their status (Flag variable; 0=Active, 1=Defaulted) one year later.
@@ -42,9 +39,6 @@ The variables of the dataset:
 - Leverage  
 - Tangible_on_total_assets
 
-  PUORUI CREARE NUOVI INDICATORI?
-
-DESCRIBE EACH VARIABLE WHAT REPRESENT
 
 
 ## EDA (Exploratory Data Analysis)  
@@ -62,10 +56,10 @@ with the command: "summary(data)" we anaylze our variables:
 | 3rd Qu.     | 0.00000  | -0.004814     | -0.02641            | -0.076514       |  0.006891  |  0.07194   |  0.08090   |  0.05976     | -0.045495              |  0.072584              |  0.012002           |  0.04629        |  0.256082                  |  0.235578  |  0.543831                |
 | Max.        | 1.00000  | 18.908105     | 17.51151            | 15.399444       | 24.976590  | 26.97940   | 21.74522   | 15.79219     | 15.414282              | 16.601217              | 20.834466           | 24.83200        |  3.409903                  |  4.072354  |  3.114502                |
 
-The default rate is  0.06832601
 
-After that visualize the distribution of each variable:
+**The default rate is  0.06832601**
 
+**Distribution of each variable**
 
 ![801d4885-2e7f-418e-a35a-8151cd4562d4](https://github.com/user-attachments/assets/da9c68df-d362-40a2-8c18-138a66e9fdc6)
 
@@ -87,7 +81,7 @@ d9c-9029-4bb1-8cfc-9225a341de44](https://github.com/user-attachments/assets/ca65
 
 
 
-correlation matrix
+**Correlation matrix**
 
 | **Variable**               | **Flag** | **Total_assets** | **Shareholders_funds** | **Long_term_debt** | **Loans** | **Turnover** | **EBITDA** | **Net_income** | **Tangible_fixed_assets** | **Profit_Loss_after_tax** | **Current_liabilities** | **Current_assets** | **Net_income_on_Total_Assets** | **Leverage** | **Tangible_on_total_assets** |
 |----------------------------|----------|------------------|------------------------|--------------------|-----------|--------------|------------|----------------|----------------------------|--------------------------|------------------------|--------------------|--------------------------------|--------------|----------------------------|
@@ -112,9 +106,6 @@ correlation matrix
 
 ### Logistic regression
 
-## Logistic Regression Results
-ecco
-
 | Variable                     | Estimate   | Std. Error | z value  | Pr(>|z|)   | Significance |
 |------------------------------|------------|------------|---------|------------|--------------|
 | **Intercept**                | -3.27901   | 0.26411    | -12.415 | < 2e-16    | ***          |
@@ -130,9 +121,8 @@ ecco
 | **Current liabilities**       | 0.18736    | 0.63805    | 0.294   | 0.76903    |              |
 | **Current assets**            | -0.21803   | 0.41994    | -0.519  | 0.60363    |              |
 | **Net income/Total Assets**   | -1.42109   | 0.18349    | -7.745  | 9.56e-15   | ***          |
-| **Leverage**                  | -0.61194   | 0.23931    | -2.557  | 0.01056    | *            |
+| **Leverage**                 | -0.61194   | 0.23931    | -2.557  | 0.01056    | *            |
 | **Tangible/Total Assets**     | -0.56079   | 0.20922    | -2.680  | 0.00735    | **           |
-
 
 ### Model Performance:
 - **Null deviance:** 715.20 (on 1434 degrees of freedom)  
@@ -145,8 +135,7 @@ ecco
 - `**` = p < 0.01 (Moderately Significant)  
 - `*` = p < 0.05 (Significant)  
 
-### odds ratio
-## Exponentiated Coefficients (Odds Ratios)
+**odds ratio**
 
 | Variable                     | exp(Estimate) | Interpretation |
 |------------------------------|--------------|----------------|
@@ -166,7 +155,7 @@ ecco
 | **Leverage**                  | 0.5423       | A 1-unit increase → 45.8% lower odds |
 | **Tangible/Total Assets**     | 0.5708       | A 1-unit increase → 42.9% lower odds |
 
-### 📝 Interpretation Notes:
+
 - Values **> 1** indicate **higher odds** of `Flag = 1` when the variable increases.
 - Values **< 1** indicate **lower odds** of `Flag = 1` when the variable increases.
 - **Extremely large or small values** (e.g., `Net Income` or `Profit/Loss after tax`) might indicate **data issues** or **outliers** affecting the model.
@@ -174,10 +163,10 @@ ecco
 
   ### sensitivity
  1-fnr
-[1] 0.5238095
+ 0.5238095
  ### specificity
  1-fpr
-[1] 0.7132867
+ 0.7132867
 
 
 
@@ -214,21 +203,24 @@ ecco
 - **Number of Fisher Scoring iterations**: 6
 
 
-## Chi-square test of the two logistic regressions
+## Chi-square Test of the Two Logistic Regressions
 
-Resid. Df	Resid. Dev	Df	Deviance	Pr(>Chi)
-1 (Model 1)	1425	552.56		
-2 (Model 2)	1420	551.92	5	0.634
+| Model       | Resid. Df | Resid. Dev | Df | Deviance | Pr(>Chi) |
+|------------|----------|------------|----|----------|---------|
+| **Model 1** | 1425     | 552.56     | -  | -        | -       |
+| **Model 2** | 1420     | 551.92     | 5  | 0.634    | 0.9864  |
 
+### Explanation:
+- **Resid. Df**: Remaining degrees of freedom for each model. Model 2 has fewer degrees of freedom (1420 vs. 1425) because it includes more variables.
+- **Resid. Dev**: Residual deviance for each model. Lower values indicate a better fit to the data.
+- **Df**: Difference in degrees of freedom between the two models (5 in this case).
+- **Deviance**: Difference between the residual deviance of the two models (0.634). A low value suggests that the more complex model does not significantly reduce the deviance compared to the simpler model.
+- **Pr(>Chi)**: P-value from the Chi-square test. **0.9864** is very high, indicating no statistical evidence to prefer the more complex model.
 
-Resid. Df: Remaining degrees of freedom for each model. Model 2 has fewer degrees of freedom (1420 vs. 1425) because it includes more variables.
-Resid. Dev: Residual deviance for each model. Lower values indicate a better fit to the data.
-Df: Difference in degrees of freedom between the two models (5 in this case).
-Deviance: Difference between the residual deviance of the two models (0.634). A low value suggests that the more complex model (fit1) does not significantly reduce the deviance compared to the simpler model (fit_step).
-Pr(>Chi): P-value from the Chi-square test. 0.9864 is very high, indicating no statistical evidence to prefer the more complex model.
-Conclusion
-Since the p-value 0.9864 is much higher than any standard significance threshold (e.g., 0.05 or 0.01), there is no evidence that the more complex model is significantly better than the simpler one.
-In practice, adding extra variables in Model 2 does not provide a significant improvement, so the simpler model might be preferable to avoid overfitting.
+### Conclusion:
+Since the p-value **0.9864** is much higher than any standard significance threshold (e.g., 0.05 or 0.01), there is no evidence that the more complex model is significantly better than the simpler one.  
+🔹 **In practice, adding extra variables in Model 2 does not provide a significant improvement, so the simpler model might be preferable to avoid overfitting.** 🚀
+
 
 
 
@@ -246,13 +238,18 @@ In practice, adding extra variables in Model 2 does not provide a significant im
 
 
 
-
-
-
-
-##TREEE
-
 ## Random Forest
+
+
+
+| Actual \ Predicted | 0 (Negative) | 1 (Positive) | Class Error |
+|--------------------|-------------|-------------|-------------|
+| **0 (Negative)**  | 1324        | 13          | 0.97%       |
+| **1 (Positive)**  | 42          | 56          | 42.86%      |
+
+**🔹 Accuracy:** **96.14%** ✅  
+
+Se vuoi aggiungere altre metriche (Precision, Recall, F1-score), fammelo sapere! 🚀
 
 ![c2119b21-d245-42e2-bf0c-0c3b2bb4aaa8](https://github.com/user-attachments/assets/2263a09d-cd0e-4eb2-86ba-c8acfa0e076f)
 
@@ -263,141 +260,9 @@ In practice, adding extra variables in Model 2 does not provide a significant im
 ## Neural Network
 
 
-## Bayesian Learning
+# Bayesian Learning
 
-
-# Bayesian Logistic Regression (MCMC)
-
-## Model Info
-- **Function**: `stan_glm`
-- **Family**: `binomial [logit]`
-- **Formula**: `Flag ~ .`
-- **Algorithm**: `sampling`
-- **Posterior Sample Size**: `4000`
-- **Observations**: `2049`
-- **Predictors**: `15`
-
----
-
-## Estimates
-
-| Variable                   | Mean   | Std. Dev. | 10%    | 50%    | 90%    |
-|----------------------------|--------|----------|--------|--------|--------|
-| **(Intercept)**            | -3.040 | 0.119    | -3.193 | -3.038 | -2.891 |
-| **Total_assets**           | -0.376 | 0.829    | -1.449 | -0.366 |  0.688 |
-| **Shareholders_funds**     | -0.299 | 0.403    | -0.814 | -0.300 |  0.209 |
-| **Long_term_debt**         |  0.528 | 0.210    |  0.267 |  0.522 |  0.799 |
-| **Loans**                  |  0.069 | 0.160    | -0.137 |  0.071 |  0.270 |
-| **Turnover**               |  0.025 | 0.160    | -0.175 |  0.026 |  0.225 |
-| **EBITDA**                 |  0.321 | 0.211    |  0.051 |  0.316 |  0.597 |
-| **Net_income**             | -0.020 | 1.846    | -2.371 |  0.022 |  2.235 |
-| **Tangible_fixed_assets**  | -0.062 | 0.259    | -0.409 | -0.052 |  0.259 |
-| **Profit_Loss_after_tax**  |  0.613 | 1.730    | -1.501 |  0.569 |  2.777 |
-| **Current_liabilities**    |  0.759 | 0.484    |  0.164 |  0.728 |  1.398 |
-| **Current_assets**         | -0.481 | 0.283    | -0.841 | -0.467 | -0.132 |
-| **Net_income_on_Total_Assets** | -1.098 | 0.123 | -1.257 | -1.097 | -0.941 |
-| **Leverage**               | -0.748 | 0.195    | -0.998 | -0.741 | -0.505 |
-| **Tangible_on_total_assets** | -0.289 | 0.154  | -0.485 | -0.288 | -0.096 |
-
----
-
-## Fit Diagnostics
-
-| Metric    | Mean  | Std. Dev. | 10%  | 50%  | 90%  |
-|-----------|-------|----------|------|------|------|
-| **mean_PPD** | 0.068 | 0.007  | 0.060 | 0.068 | 0.078 |
-
-> **Note**: `mean_PPD` is the sample average posterior predictive distribution of the outcome variable.  
-
----
-
-## MCMC Diagnostics
-
-| Variable                   | MCSE  | Rhat | n_eff |
-|----------------------------|------|------|------|
-| **(Intercept)**            | 0.002 | 1.000 | 3295 |
-| **Total_assets**           | 0.019 | 1.001 | 1935 |
-| **Shareholders_funds**     | 0.009 | 1.000 | 2123 |
-| **Long_term_debt**         | 0.005 | 1.000 | 1541 |
-| **Loans**                  | 0.003 | 1.001 | 3627 |
-| **Turnover**               | 0.003 | 1.000 | 3457 |
-| **EBITDA**                 | 0.004 | 1.001 | 2756 |
-| **Net_income**             | 0.041 | 1.003 | 2024 |
-| **Tangible_fixed_assets**  | 0.006 | 1.000 | 1781 |
-| **Profit_Loss_after_tax**  | 0.038 | 1.003 | 2052 |
-| **Current_liabilities**    | 0.012 | 1.000 | 1725 |
-| **Current_assets**         | 0.006 | 1.000 | 2095 |
-| **Net_income_on_Total_Assets** | 0.002 | 1.000 | 3844 |
-| **Leverage**               | 0.004 | 1.001 | 2579 |
-| **Tangible_on_total_assets** | 0.003 | 1.003 | 2676 |
-| **mean_PPD**               | 0.000 | 1.000 | 5082 |
-| **log-posterior**          | 0.076 | 1.002 | 1427 |
-
-> **Interpretation**:
-> - **MCSE (Monte Carlo Standard Error)**: Indicates the error in MCMC estimation.
-> - **Rhat (Potential Scale Reduction Factor)**: Should be **≈1.000** for convergence.
-> - **n_eff (Effective Sample Size)**: Higher values indicate better sampling efficiency.
-
----
-
-### **Key Takeaways**
-✔️ Most variables have well-defined credible intervals.  
-✔️ `Net_income_on_Total_Assets` and `Leverage` show **strong negative effects**.  
-✔️ `Current_liabilities` and `EBITDA` have **positive effects**.  
-✔️ The model appears **well-converged** (`Rhat ≈ 1.000`).  
-✔️ Bayesian logistic regression provides **credible intervals** instead of p-values.
-
----
-
-### 📌 **How to Interpret Bayesian Results**
-- If a **credible interval** (10%-90%) **does not contain zero**, the predictor is likely **significant**.
-- Unlike frequentist regression, Bayesian inference provides **uncertainty estimates** directly.
-- If `Rhat` is far from **1.000**, **increase iterations** for better convergence.
-
-
-
-## 50% Credible Intervals for Model Parameters
-
-| Variable                   | 25%   | 75%   |
-|----------------------------|------|------|
-| **(Intercept)**            | -3.120 | -2.958 |
-| **Total_assets**           | -0.927 |  0.183 |
-| **Shareholders_funds**     | -0.571 | -0.044 |
-| **Long_term_debt**         |  0.383 |  0.660 |
-| **Loans**                  | -0.037 |  0.177 |
-| **Turnover**               | -0.074 |  0.128 |
-| **EBITDA**                 |  0.180 |  0.461 |
-| **Net_income**             | -1.204 |  1.197 |
-| **Tangible_fixed_assets**  | -0.228 |  0.117 |
-| **Profit_Loss_after_tax**  | -0.528 |  1.721 |
-| **Current_liabilities**    |  0.409 |  1.068 |
-| **Current_assets**         | -0.659 | -0.287 |
-| **Net_income_on_Total_Assets** | -1.183 | -1.013 |
-| **Leverage**               | -0.876 | -0.612 |
-| **Tangible_on_total_assets** | -0.389 | -0.184 |
-
----
-
-### **Interpretation**
-- The **credible interval** (CI) represents the **range where the true coefficient value is likely to fall** with **50% probability**.
-- **Predictors whose intervals do not include zero** suggest a **stronger effect**.
-- For example:
-  - `Net_income_on_Total_Assets` and `Leverage` have **negative effects** (CIs entirely below 0).
-  - `Long_term_debt`, `EBITDA`, and `Current_liabilities` have **positive effects**.
-  - `Net_income` and `Profit_Loss_after_tax` have **wide CIs**, indicating **higher uncertainty**.
-
-📌 **If an interval includes zero, the predictor’s effect may be weak or uncertain.**  
-
-
-
-![e4c41338-070e-4b0b-bf49-80ef1626023e](https://github.com/user-attachments/assets/c71970a1-f298-405d-bf35-9c1c517fd0e2)
-
-Density plot of posterior distributions
-
-![c50bdf26-ade2-4c0f-818d-d68cc4787f5c](https://github.com/user-attachments/assets/dea31467-0855-4bcf-89fd-a31b8d24f02f)
-
-
-## Bayesian Logistic Regression Results (MCMC)
+## Bayesian Logistic Regression  (MCMC)
 
 The table below presents the 95% Highest Density Interval (HDI) for each parameter in the Bayesian logistic regression model using Markov Chain Monte Carlo (MCMC) sampling. The HDI provides the range of the most credible values for each parameter.
 
@@ -569,18 +434,79 @@ The result of predictions:
 
 
 
-##Naive Bayes classifier
+## Naive Bayes classifier
+
+## A-Priori Probabilities
+| Class (Y) | Probability |
+|-----------|------------|
+| 0         | 0.9317     |
+| 1         | 0.0683     |
+
+## A-Priori Class Counts
+| Class (Y) | Count |
+|-----------|-------|
+| 0         | 1337  |
+| 1         | 98    |
+
+---
+
+## Conditional Probabilities
+| Feature                      | Mean (Y=0) | Std Dev (Y=0) | Mean (Y=1) | Std Dev (Y=1) |
+|------------------------------|------------|---------------|------------|---------------|
+| Total_assets                 | -0.0354    | 0.4804        | 0.2614     | 2.6784        |
+| Shareholders_funds           | -0.0152    | 0.8629        | 0.0776     | 1.7475        |
+| Long_term_debt               | 0.0081     | 0.8656        | -0.0324    | 1.6075        |
+| Loans                        | -0.0335    | 0.5117        | 0.2473     | 2.6895        |
+| Turnover                     | -0.0440    | 0.2373        | 0.1527     | 2.8761        |
+| EBITDA                       | -0.0318    | 0.4906        | 0.0760     | 3.0077        |
+| Net_income                   | 0.0089     | 0.8653        | -0.1795    | 1.8981        |
+| Tangible_fixed_assets        | 0.0111     | 0.8989        | 0.0284     | 1.7278        |
+| Profit_Loss_after_tax        | 0.0174     | 0.9191        | -0.1877    | 2.0061        |
+| Current_liabilities          | -0.0458    | 0.3827        | 0.3657     | 3.0517        |
+| Current_assets               | -0.0380    | 0.5742        | 0.2465     | 2.9385        |
+| Net_income_on_Total_Assets   | 0.0931     | 0.8401        | -1.1182    | 1.9394        |
+| Leverage                     | 0.0575     | 1.0458        | -0.3003    | 0.7654        |
+| Tangible_on_total_assets     | 0.0391     | 1.0056        | -0.3054    | 0.9909        |
+
+---
+
+## Confusion Matrix & Performance Metrics
+
 ### Confusion Matrix
 | Predicted | Actual 0 | Actual 1 |
 |-----------|---------|---------|
 | **0**     | 554     | 33      |
 | **1**     | 18      | 9       |
 
-### Accuracy
-**91.69%**
+### Performance Metrics
+| Metric                  | Value  |
+|-------------------------|--------|
+| **Accuracy**            | 91.69% |
+| 95% Confidence Interval | (89.22%, 93.75%) |
+| No Information Rate     | 93.16% |
+| P-Value (Acc > NIR)     | 0.9322 |
+| **Kappa**               | 0.2191 |
+| McNemar's Test P-Value  | 0.04995 |
+| **Sensitivity**         | 96.85% |
+| **Specificity**         | 21.43% |
+| **Positive Predictive Value** | 94.38% |
+| **Negative Predictive Value** | 33.33% |
+| Prevalence              | 93.16% |
+| Detection Rate          | 90.23% |
+| Detection Prevalence    | 95.60% |
+| **Balanced Accuracy**   | 59.14% |
 
-### Interpretation
-The Naïve Bayes classifier performed well, achieving an accuracy of **91.69%**. However, the model has some difficulty correctly predicting class **1**, as indicated by the lower count of true positives (9) and the number of false negatives (33). Depending on the application, further tuning or feature selection may help improve classification performance, especially for the minority class.
+---
+
+## Interpretation
+The Naïve Bayes classifier achieved an accuracy of **91.69%**, indicating strong overall performance. However, the model struggles with correctly predicting instances of class **1**, as reflected in the relatively low true positive count (9) and the number of false negatives (33). This suggests potential areas for improvement, such as:
+- **Feature Engineering**: Refining the features to enhance class separability.
+- **Resampling Techniques**: Addressing class imbalance through oversampling (SMOTE) or undersampling.
+- **Model Tuning**: Experimenting with different probability estimation methods to improve minority class detection.
+
+**Positive Class:** 0
+
+Further adjustments could help improve classification performance, particularly for the minority class (Y=1).
 
 
 ## Conclusions
