@@ -29,8 +29,10 @@ library(neuralnet)
 library(pROC)
 
 
-
-library(LearnBayes);library(lattice)
+  library(bayestestR)
+library(rstanarm)
+library(LearnBayes
+library(lattice)
 
 dataset_path <- "/Users/pedrocchiedoardo/Desktop/esame statistical learning/Dataset2_Companies.xlsx"
 
@@ -44,8 +46,11 @@ library(nnet)
 library(neuralnet)
 
 
-########################## EDA #####################################################
-
+##########################
+########################## 
+####### EDA ############## 
+##########################
+##########################
 
 print(head(data))
 
@@ -59,14 +64,14 @@ attach(data)
 
 
 
-## Get default rate
+# default rate
 def_perc<-sum(data$Flag)/length(data$Flag)
 print(def_perc)
 
 
 numeric_columns <- names(data)[sapply(data, is.numeric)]
 
-
+#plots
 for (col in numeric_columns) {
   print(
     ggplot(data, aes(x = .data[[col]])) +
@@ -84,7 +89,7 @@ for (col in numeric_columns) {
         labs(title = paste("Boxplot di", col), y = col) +
         theme_minimal()
     )
-    Sys.sleep(1)  # Pausa di 1 secondo tra i grafici
+    Sys.sleep(1)  
   }
     
 cor(data[, sapply(data, is.numeric)])
@@ -92,42 +97,36 @@ cor(data[, sapply(data, is.numeric)])
     correlation_matrix <- cor(data[, sapply(data, is.numeric)])
     print(correlation_matrix)
     
-    # Heatmap  correlation matrix
+
     heatmap(correlation_matrix, main="correlation matrix", col=heat.colors(10))
     
-    
-    
-    #  comparing the distribution of a variable between the two groups
-    ggplot(data,aes(Turnover,fill=Flag))+geom_density(alpha=0.2)
-    ###################
     
     
     ############Financial Learning#########
     
    
     
-    # Transform "Default" and "Loss" variables to factors
+    # Transform "Default" in factor
     data$Flag<-as.factor(data$Flag)
 
     
     # Split the dataset into training and testing samples 
-    # Stratified Sampling 
-    
-  
-  
+    # use Stratified Sampling 
+
+
     set.seed(300)
     perc<-0.7
     div<-createDataPartition(y=data$Flag,p=perc,list=F)
     
-    # Training Sample
+    
     data.train_1<-data[div,] # 70% here
   
-    # Test Sample
     data.test_1<-data[-div,] # the rest of the data goes here
    
-    
-    ###### 1. logistic regression
-    
+    ##########################
+    #1. logistic regression
+    ##########################
+        
     ### MODEL WITH ALL VARIABLES 
     fit1<-glm(Flag~.,data=data.train_1,family=binomial())
     summary(fit1)
@@ -141,9 +140,7 @@ cor(data[, sapply(data, is.numeric)])
     # Decide a cut-off and get predictions
     cut_off<-def_perc
     data.test_1$pred<-ifelse(data.test_1$score<=cut_off,0,1)
-    
-    # Does the model classify the companies well?
-    
+  
     ##false positive rate
     n_neg<-nrow(data.test_1[data.test_1$Flag=='0',])
     data.test_1$fp_flag<-ifelse(data.test_1$pred==1 & data.test_1$Flag=='0',1,0)
@@ -161,11 +158,10 @@ cor(data[, sapply(data, is.numeric)])
     1-fpr
     
     
-    
-    
-    ###########model selection
-    
-    ## Stepwise regression
+    ##########################
+    #2. Stepwise regression
+    ##########################
+        
     fit_step<-step(fit1,direction='both')
     summary(fit_step)
     
@@ -196,10 +192,14 @@ cor(data[, sapply(data, is.numeric)])
     
     
     
-    
+    ##########################
     ######tree 
-    # We use the CART decision tree algorithm
-    # The CART algorithm for classification trees minimizes the Gini impurity in each group
+    ##########################
+        
+    #CART decision tree (minimizes the Gini impurity in each group)
+
+    #remember to change name
+
     fit1<-rpart(Flag~.,data=data.train,method="class")
     
     # Print tree detail
@@ -234,23 +234,19 @@ cor(data[, sapply(data, is.numeric)])
     # The Gini coefficient is measured in values between 0 and 1, where a score of 1 means that the model is 100% accurate
     # in predicting the outcome, While a Gini score equal to 0 means that the model is entirely inaccurate (random model).
     
-    ###cambiare i valori
+    ###remember to change variables
     fit1_AUROC<-round(performance(fit1_pred,measure="auc")@y.values[[1]]*100,2)
     fit1_KS<-round(max(attr(fit1_perf,'y.values')[[1]]-attr(fit1_perf,'x.values')[[1]])*100,2)
     fit1_Gini<-(2*fit1_AUROC-100)
     CART_tree<-cat("AUROC:",fit1_AUROC,"KS:",fit1_KS,"Gini:",fit1_Gini)
     
-    # Conditional inference tree --> 
-    # Both rpart and ctree recursively perform univariate splits 
-    # of the target variable based on values on the other variables in the dataset
-    # Differently from the CART, ctree uses a significance test procedure 
-    # in order to select variables instead of selecting the variables that minimize the Gini impurity.
+
     fit2<-ctree(Flag~.,data=data.train)
     fit2
     summary(fit2)
     
     
-    # This is essentially a decision tree but with extra information in the terminal nodes.
+    # This is  a decision tree but with extra information in the terminal nodes.
     plot(fit2,gp=gpar(fontsize=6),ip_args=list(abbreviate=FALSE,id=FALSE))
     
     
@@ -273,9 +269,10 @@ cor(data[, sapply(data, is.numeric)])
     
     
     
-    
-    ##### 2. RANDOM FOREST
-    
+      ####################
+      #2. RANDOM FOREST
+      ####################
+  
     fit3<-randomForest(Flag~.,data=data.train_1,na.action=na.roughfix)
     
     fit3_fitForest<-predict(fit3,newdata=data.test_1,type="prob")[,2]
@@ -310,9 +307,9 @@ cor(data[, sapply(data, is.numeric)])
     accuracy <- sum(diag(fit3$confusion)) / sum(fit3$confusion)
     cat("Accuracy:", round(accuracy * 100, 2), "%")
     
-    #### 3. NEURAL NETWORK
+
     ###########################
-    ##### NEURAL NETWORK #####
+    ##### 4.NEURAL NETWORK #####
     ###########################
     
     
@@ -322,8 +319,6 @@ cor(data[, sapply(data, is.numeric)])
     
 
     # Train a neural network model on the dataset with normalized data
- 
-  #standardize
     
     # Definizione della funzione di standardizzazione
     standardize <- function(x, mean_val, sd_val) {
@@ -400,10 +395,12 @@ cor(data[, sapply(data, is.numeric)])
       
       
       
-      ####da qua modificare
+
       
       
       
+     ##########modificare#############
+
       
       # Generate predictions on the test set
       nn_pred <- compute(nn_cv, test_cv[, -which(names(test_cv) == "Flag")])
@@ -423,12 +420,12 @@ cor(data[, sapply(data, is.numeric)])
     
     
 #####SAFE AI ######
+        
     
     #########################Bayesian Learning######################################################
-    
-    library(bayestestR)
-    
-library(rstanarm)
+    #######################################################
+        
+  
     
     # Define the prior (Student's t with df=7, location=0, scale=2.5)
     t_prior <- student_t(df = 7, location = 0, scale = 2.5)
